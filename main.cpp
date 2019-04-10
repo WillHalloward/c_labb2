@@ -64,7 +64,6 @@ int main() {
       }
 
       case 8: {
-        mode = 0;
         while (true) {
           try {
             int *kib = new int[256];
@@ -75,7 +74,6 @@ int main() {
       }
 
       case 9: {
-        mode = 0;
         while (true) {
           try {
             int *gib = new int[268435456];
