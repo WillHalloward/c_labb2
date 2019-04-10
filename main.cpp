@@ -7,7 +7,7 @@
 
 int main() {
   int mode = 0;
-  while (mode < 1 || mode > 7) {
+  while (mode < 1 || mode > 9) {
     std::cout << "\n"
                  "1 - 1 KiB. - 1 Kibibyte - 1024 bytes\n"
                  "2 - new std::string[1]. - 16 byte???\n"
@@ -22,109 +22,73 @@ int main() {
     std::cin.clear();
     std::cin.ignore();
     switch (mode) {
-    case 1: {
-      mode = 0;
-      try {
+      case 1: {
+        mode = 0;
         int *kib = new int[256];
+        continue;
       }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl; // Körs denna rad?
+      case 2: {
+        mode = 0;
+        std::string *adr = new std::string[1];
+        continue;
       }
-      continue;
-    }
-    case 2: {
-      mode = 0;
-      try {
-        std::string *t1 = new std::string[1];
-      }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl;
-      }
-    }
-      continue;
 
-    case 3: {
-      mode = 0;
-      try {
-        int *t2 = new int[1];
+      case 3: {
+        mode = 0;
+        int *adr = new int[1];
+        continue;
       }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl;
-      }
-      continue;
-    }
 
-    case 4: {
-      mode = 0;
-      try {
-        char *t3 = new char[1];
+      case 4: {
+        mode = 0;
+        char *adr = new char[1];
+        continue;
       }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl;
-      }
-      continue;
-    }
 
-    case 5: {
-      mode = 0;
-      try {
-        long *t4 = new long[1];
+      case 5: {
+        mode = 0;
+        long *adr = new long[1];
+        continue;
       }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl;
-      }
-      continue;
-    }
 
-    case 6: {
-      mode = 0;
-      try {
+      case 6: {
+        mode = 0;
         int *t5 = new int;
+        continue;
       }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl;
-      }
-      continue;
-    }
 
-    case 7: {
-      mode = 0;
-      try {
-        int *t6 = new int[268435456];
+      case 7: {
+        mode = 0;
+        int *gib = new int[268435456];
+        continue;
       }
-      catch (std::bad_alloc e) {
-        std::cerr << e.what() << std::endl;
-      }
-      continue;
-    }
 
-    case 8: {
-      mode = 0;
-      while (true) {
-        try {
-          int *kib = new int[256];
-        }
-        catch (std::bad_alloc e) {
-          std::cerr << e.what() << std::endl;
+      case 8: {
+        mode = 0;
+        while (true) {
+          try {
+            int *kib = new int[256];
+          } catch (std::bad_alloc e) {
+            std::cerr << e.what() << std::endl;
+          }
         }
       }
-    }
 
-    case 9: {
-      mode = 0;
-      while (true) {
-        try {
-          int *t8 = new int[268435456];
-        }
-        catch (std::bad_alloc e) {
-          std::cerr << e.what() << std::endl;
+      case 9: {
+        mode = 0;
+        while (true) {
+          try {
+            int *gib = new int[268435456];
+          } catch (std::bad_alloc e) {
+            std::cerr << e.what() << std::endl;
+          }
         }
       }
+      default: {
+        continue;
+      }
     }
-    }
-    return 0;
   }
 }
 
 // 2147483647 == 0x7fffffff, Max size of new int in x64?'
-// 1073741824 Gibibyte to bytes
